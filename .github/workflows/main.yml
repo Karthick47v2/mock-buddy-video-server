@@ -68,10 +68,3 @@ jobs:
           heroku buildpacks:add heroku/python
       - name: Push to Heroku
         run: git push -f heroku main
-
-        # uses: akhileshns/heroku-deploy@v3.12.12
-        # with:
-        #   heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-        #   heroku_app_name: "mock-buddy"
-        #   heroku_email: "karthicksharma11@gmail.com"
-        #   procfile: "web: gunicorn app:app"
