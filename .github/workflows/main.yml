@@ -50,4 +50,5 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: "mock-buddy"
           heroku_email: "karthicksharma11@gmail.com"
+          buildpack: "https://github.com/heroku/heroku-buildpack-apt.git"
           procfile: "web: gunicorn app:app"
