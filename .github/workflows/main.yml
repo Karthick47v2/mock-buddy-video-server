@@ -61,12 +61,12 @@ jobs:
       - name: Add Heroku remote
         run: heroku git:remote --app mock-buddy
       - name: Add buildpacks
+        continue-on-error: true
         run: |
           heroku buildpacks:add --index 1 https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git
           heroku buildpacks:add --index 1 heroku-community/apt
           heroku buildpacks:add heroku/python
       - name: Push to Heroku
-        continue-on-error: true
         run: git push -f heroku main
 
         # uses: akhileshns/heroku-deploy@v3.12.12
