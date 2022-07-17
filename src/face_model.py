@@ -3,7 +3,7 @@
 import base64
 import numpy as np
 # pylint: disable=I1101
-from cv2 import cv2
+import cv2
 # pylint: disable=E0401
 from tensorflow import keras
 
