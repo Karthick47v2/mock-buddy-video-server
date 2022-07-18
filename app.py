@@ -16,8 +16,8 @@ cors = CORS(app)
 # socket comm
 socketio = SocketIO(app, cors_allowed_origins="*")
 
-# api key
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = './secrets/mock-buddy.json'
+# # api key
+# os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = './secrets/mock-buddy.json'
 
 # initialize models
 fm = FaceModel()
