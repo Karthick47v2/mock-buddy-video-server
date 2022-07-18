@@ -47,6 +47,8 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      - name: Decode secrets
+        run: echo ${{ secrets.GGL_API_KEY_JSON }} | base64 -d > secrets/mock-buddy.json
       - name: Heroku login
         run: |
           cat > ~/.netrc <<EOF
