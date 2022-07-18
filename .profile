@@ -1,1 +1,1 @@
-echo ${GOOGLE_CREDENTIALS} > /secrets/mock-buddy.json
+echo ${GOOGLE_CREDENTIALS} > secrets/mock-buddy.json
