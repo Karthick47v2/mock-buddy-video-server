@@ -11,3 +11,4 @@ librosa
 opencv-python-headless
 pyaudio
 webrtcvad
+tensorflow
