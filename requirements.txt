@@ -9,5 +9,6 @@ google-cloud-storage
 librosa==0.9.0
 opencv-python-headless
 pyaudio
-webrtcvad
-tensorflow-cpu==2.4.0
+webrtcvad-wheels
+python-dotenv
+tensorflow-cpu==2.6.4
