@@ -10,4 +10,4 @@ librosa
 opencv-python-headless
 pyaudio
 webrtcvad
-tensorflow-cpu
+tensorflow-cpu==2.2
