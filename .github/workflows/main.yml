@@ -60,6 +60,10 @@ jobs:
           HEROKU_EMAIL: karthicksharma11@gmail.com
       - name: Add Heroku remote
         run: heroku git:remote --app mock-buddy
+      - name: Purge cache
+        run: |
+        heroku plugins:install heroku-repo
+        heroku repo:purge_cache -a mock-buddy
       - name: Add buildpacks
         continue-on-error: true
         run: |
