@@ -52,34 +52,34 @@ def get_audio():
     Returns:
         dict[str,str]: response
     """
-    try:
-        file = request.files['file']
-        # name as M_D_Y_H_M_S format in order to avoid overwriting issue
-        audio_file = AudioUtil(file_name=datetime.datetime.now().strftime(
-            '%m_%d_%Y_%H_%M_%S') + '.wav')
+    # try:
+    file = request.files['file']
+    # name as M_D_Y_H_M_S format in order to avoid overwriting issue
+    audio_file = AudioUtil(file_name=datetime.datetime.now().strftime(
+        '%m_%d_%Y_%H_%M_%S') + '.wav')
 
-        audio_file.change_audio_format(file)
+    audio_file.change_audio_format(file)
 
-        # upload audio to ggl storage (mandatory for transcribing long audio (> 1mins))
-        audio_file.storage.upload_to_bucket(audio_file.file_name)
+    # upload audio to ggl storage (mandatory for transcribing long audio (> 1mins))
+    audio_file.storage.upload_to_bucket(audio_file.file_name)
 
-        speech_rate = audio_file.get_speech_rate()
+    speech_rate = audio_file.get_speech_rate()
 
-        # delete existing file in storage (local and cloud)
-        audio_file.storage.delete_file(audio_file.file_name)
-        if os.path.exists(audio_file.file_name):
-            os.remove(audio_file.file_name)
+    # delete existing file in storage (local and cloud)
+    audio_file.storage.delete_file(audio_file.file_name)
+    if os.path.exists(audio_file.file_name):
+        os.remove(audio_file.file_name)
 
-        return {
-            'status': 200,
-            'wpm': speech_rate
-        }
-    # pylint: disable=broad-except
-    except Exception as exp:
-        print(exp)
-        return{
-            'status': 400
-        }
+    return {
+        'status': 200,
+        'wpm': speech_rate
+    }
+    # # pylint: disable=broad-except
+    # except Exception as exp:
+    #     print(exp)
+    #     return{
+    #         'status': 400
+    #     }
 
 
 # SocketIO events
