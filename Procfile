@@ -1,1 +1,1 @@
-web: python:3.8.5-slim-buster --worker-class eventlet -w 1 app
+web: gunicorn --worker-class eventlet -w 1 app
