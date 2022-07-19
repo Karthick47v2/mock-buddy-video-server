@@ -6,7 +6,7 @@ flask-cors==3.0.10
 google-cloud-speech
 google-cloud-storage
 librosa==0.9.0
-opencv-python-headless
+opencv-python-headless==3.4.2.17
 pyaudio
 webrtcvad-wheels
 python-dotenv
