@@ -70,6 +70,6 @@ jobs:
         run: |
           heroku buildpacks:add --index 1 https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git
           heroku buildpacks:add --index 1 heroku-community/apt
-          heroku buildpacks:add heroku/python
+          heroku buildpacks:add https://github.com/pallets/flask.git
       - name: Push to Heroku
         run: git push -f heroku main
