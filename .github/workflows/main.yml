@@ -40,7 +40,7 @@ jobs:
   heroku_deploy:
     runs-on: ubuntu-latest
     name: Deploy to Heroku
-    needs: py_test
+    # needs: py_test
     if: "contains(github.event.head_commit.message, 'deploy to heroku')"
     steps:
       - name: Checkout source repo
