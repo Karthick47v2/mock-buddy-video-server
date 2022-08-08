@@ -57,7 +57,7 @@ python3.7 app.py
 👤 **Karthick T. Sharma**
 
 - Github: [@karthick47v2](https://github.com/karthick47v2)
-- LinkedIn: [@Karthick T. Sharma](https://linkedin.com/in/karthick47)
+- LinkedIn: [@Karthick T. Sharma](https://linkedin.com/in/Karthick47)
 
 ## 🤝 Contributing
 
