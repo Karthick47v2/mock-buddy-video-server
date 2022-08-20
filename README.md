@@ -63,7 +63,7 @@ pip install -r requirements.txt
 Tested on python 3.7 and 3.8
 
 ```sh
-python3.7 app.py
+python3 app.py
 ```
 
 ## Author
