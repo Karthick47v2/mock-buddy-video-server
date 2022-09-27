@@ -11,6 +11,9 @@ __pycache__/
 # wav
 *.wav
 
+# test
+*.pptx
+
 # Distribution / packaging
 .Python
 build/
