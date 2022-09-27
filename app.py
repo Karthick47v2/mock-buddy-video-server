@@ -42,6 +42,10 @@ def get_vid_fb():
     return fm.get_vid_feedback()
 
 
+# @app.route('/slide_analyze', methods=['POST'])
+# def analyze_slide():
+
+
 @app.route('/audio_out/', methods=['POST'])
 def get_audio():
     """Process audio file sent from client
