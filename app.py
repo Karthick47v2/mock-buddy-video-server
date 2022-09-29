@@ -3,10 +3,9 @@
 import os
 import datetime
 
-from flask import Flask, request
+from flask import Flask, request, json
 from flask_socketio import SocketIO
 from flask_cors import CORS
-from flask import json
 
 from src.face_model import FaceModel
 from src.audio_util import AudioUtil
@@ -48,22 +47,31 @@ def get_vid_fb():
 
 @app.post('/slide_analyze/')
 def analyze_slide():
-    slide = Slide(request.json['url'])
+    """Extract slide and analyze for improvements
+
+    Returns:
+        dict[str,str]: response
+    """
+    slide = Slide(request.json['url'], datetime.datetime.now().strftime(
+        '%m_%d_%Y_%H_%M_%S') + '.pptx')
     slide.extract_pptx()
 
     info = slide.get_data()
 
+    # check for spelling and grammatical errors
     lang_tool = LangChecker(slide.get_txt())
     suggestions = lang_tool.get_results()
+
+    # delete slide after processing
+    if os.path.exists(slide.filename):
+        os.remove(slide.file_name)
 
     return {
         'slide_count': info[0],
         'word_count': json.dumps(info[1]),
         'shape_count': info[2],
         'font_count': json.dumps(info[3]),
-        'mistake': json.dumps(suggestions[0]),
-        'mistake_exp': json.dumps(suggestions[1]),
-        'top3_suggestions': json.dumps(suggestions[2])
+        'mistake': json.dumps(suggestions)
     }
 
 
@@ -98,7 +106,7 @@ def get_audio():
         }
     # pylint: disable=broad-except
     except Exception:
-        return{
+        return {
             'status': 400
         }
 
