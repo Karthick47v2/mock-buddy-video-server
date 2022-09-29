@@ -13,4 +13,4 @@ python-dotenv
 python-pptx==0.6.21
 tensorflow-cpu==2.6.4
 webrtcvad-wheels
-protobuf==3.20.0
+protobuf==3.20.2
