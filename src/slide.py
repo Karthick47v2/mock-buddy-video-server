@@ -38,6 +38,9 @@ class Slide:
         """
         try:
             request.urlretrieve(self.__url, self.filename)
+            return {
+                'status': 200
+            }
         except HTTPError:
             return {
                 'status': 400
@@ -73,7 +76,7 @@ class Slide:
         Args:
             shape_type (int): type of shape (picture = 13, auto-shape = 6, etc.)
         """
-        if shape_type == 13 or shape_type == 6:
+        if shape_type in [13, 6]:
             self.__shape_count += 1
 
     def extract_pptx(self):
