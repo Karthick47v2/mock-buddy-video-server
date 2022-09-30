@@ -64,7 +64,7 @@ def analyze_slide():
 
     # delete slide after processing
     if os.path.exists(slide.filename):
-        os.remove(slide.file_name)
+        os.remove(slide.filename)
 
     return {
         'slide_count': info[0],
