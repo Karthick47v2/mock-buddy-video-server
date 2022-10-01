@@ -1,7 +1,7 @@
 flask==2.0.0
 flask-cors==3.0.10
 flask-socketio==5.0.2
-eventlet==0.31.0
+eventlet==0.30.2
 google-cloud-speech
 google-cloud-storage
 gunicorn==20.1.0
