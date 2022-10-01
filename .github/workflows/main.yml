@@ -76,7 +76,7 @@ jobs:
   #     - name: Push to Heroku
   #       run: git push -f heroku main
 
-   heroku_deploy:
+  heroku_deploy:
     runs-on: ubuntu-latest
     name: Deploy to Heroku
     needs: py_test
