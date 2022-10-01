@@ -70,7 +70,7 @@ jobs:
         run: |
           heroku buildpacks:add -i 1 https://github.com/heroku/heroku-buildpack-jvm-common.git  
           heroku buildpacks:add --index 1 https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git
-          heroku buildpack:add --index 1 https://github.com/jayshreeanand/heroku-buildpack-libsndfile.git
+          heroku buildpacks:add --index 1 https://github.com/jayshreeanand/heroku-buildpack-libsndfile.git
           heroku buildpacks:add --index 1 heroku-community/apt
           heroku buildpacks:add heroku/python
       - name: Push to Heroku
