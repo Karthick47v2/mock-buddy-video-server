@@ -37,7 +37,46 @@ jobs:
       #     flags: unittests
       #     verbose: true
 
-  heroku_deploy:
+  # heroku_deploy:
+  #   runs-on: ubuntu-latest
+  #   name: Deploy to Heroku
+  #   needs: py_test
+  #   if: "contains(github.event.head_commit.message, 'deploy to heroku')"
+  #   steps:
+  #     - name: Checkout source repo
+  #       uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: 0
+  #     - name: Heroku login
+  #       run: |
+  #         cat > ~/.netrc <<EOF
+  #           machine api.heroku.com
+  #             login $HEROKU_EMAIL
+  #             password ${{ secrets.HEROKU_API_KEY }}
+  #           machine git.heroku.com
+  #             login $HEROKU_EMAIL
+  #             password ${{ secrets.HEROKU_API_KEY }}
+  #         EOF
+  #       env:
+  #         HEROKU_EMAIL: karthicksharma11@gmail.com
+  #     - name: Add Heroku remote
+  #       run: heroku git:remote --app mock-buddy
+  #     - name: Purge cache
+  #       run: |
+  #         heroku plugins:install heroku-repo
+  #         heroku repo:purge_cache -a mock-buddy
+  #     - name: Add buildpacks
+  #       continue-on-error: true
+  #       run: |
+  #         heroku buildpacks:add -i 1 https://github.com/heroku/heroku-buildpack-jvm-common.git  
+  #         heroku buildpacks:add --index 1 https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git
+  #         heroku buildpacks:add --index 1 https://github.com/primaryobjects/heroku-buildpack-libsndfile.git
+  #         heroku buildpacks:add --index 1 heroku-community/apt
+  #         heroku buildpacks:add heroku/python
+  #     - name: Push to Heroku
+  #       run: git push -f heroku main
+
+   heroku_deploy:
     runs-on: ubuntu-latest
     name: Deploy to Heroku
     needs: py_test
@@ -47,30 +86,14 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Heroku login
-        run: |
-          cat > ~/.netrc <<EOF
-            machine api.heroku.com
-              login $HEROKU_EMAIL
-              password ${{ secrets.HEROKU_API_KEY }}
-            machine git.heroku.com
-              login $HEROKU_EMAIL
-              password ${{ secrets.HEROKU_API_KEY }}
-          EOF
-        env:
-          HEROKU_EMAIL: karthicksharma11@gmail.com
-      - name: Add Heroku remote
-        run: heroku git:remote --app mock-buddy
-      - name: Purge cache
-        run: |
-          heroku plugins:install heroku-repo
-          heroku repo:purge_cache -a mock-buddy
-      - name: Add buildpacks
-        continue-on-error: true
-        run: |
-          heroku buildpacks:add --index 1 https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git
-          heroku buildpacks:add --index 1 https://github.com/primaryobjects/heroku-buildpack-libsndfile.git
-          heroku buildpacks:add --index 1 heroku-community/apt
-          heroku buildpacks:add heroku/python
-      - name: Push to Heroku
-        run: git push -f heroku main
+      - name: Deploy
+        uses: gonuit/heroku-docker-deploy@v1.3.3
+        with:
+          email: karthicksharma11@gmail.com
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: mock-buddy
+          
+          dockerfile_directory: ./
+          dockerfile_name: Dockerfile
+          docker_options: "--no-cache"
+          process_type: web
