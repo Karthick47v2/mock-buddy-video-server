@@ -2,7 +2,7 @@ FROM alpine:latest
 WORKDIR /app
 # RUN apt-get update && apt-get upgrade -y && apt-get install -y portaudio19-dev ffmpeg openjdk-8-jdk software-properties-common apt-transport-https dotnet6
 RUN apk update && apk upgrade 
-RUN apk add --no-cache portaudio-dev ffmpeg openjdk8 gcc
+RUN apk add --no-cache portaudio-dev ffmpeg openjdk8 make automake gcc g++ subversion
 
 RUN apk add --update python3-dev py3-pip
 
