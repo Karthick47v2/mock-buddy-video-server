@@ -4,7 +4,7 @@ WORKDIR /app
 RUN apk update && apk upgrade 
 RUN apk add --no-cache portaudio-dev ffmpeg openjdk8
 
-RUN apk add --update python3-dev python3-pip
+RUN apk add --update python3-dev py3-pip
 
 # RUN add-apt-repository ppa:deadsnakes/ppa && apt update && apt install -y python3.9-dev gcc python3-pip
 COPY requirements.txt .
