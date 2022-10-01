@@ -9,7 +9,7 @@ language-tool-python==2.7.1
 librosa==0.9.0
 opencv-python-headless==3.4.2.17
 pyaudio 
-python-pptx==0.6.21
-tensorflow-cpu==2.6.4
+python-pptx==0.6.12
+tensorflow-cpu==2.6.4   
 webrtcvad-wheels
-protobuf==3.20.2
+protobuf==3.20.0
