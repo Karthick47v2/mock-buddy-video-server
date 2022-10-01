@@ -2,7 +2,7 @@ FROM ubuntu:latest
 WORKDIR /app
 # RUN apt-get update && apt-get upgrade -y && apt-get install -y portaudio19-dev ffmpeg openjdk-8-jdk software-properties-common apt-transport-https dotnet6
 
-RUN apt-get update && apt-get upgrade -y && apt-get install -y portaudio19-dev ffmpeg openjdk-8-jdk
+RUN apt-get update && apt-get upgrade -y && apt-get install -y portaudio19-dev ffmpeg openjdk-8-jdk software-properties-common
 
 # RUN apk add --update python3-dev py3-pip py3-wheel
 
