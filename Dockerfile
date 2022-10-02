@@ -1,4 +1,4 @@
-FROM ubuntu:18.04 
+FROM ubuntu:20.04 
 
 WORKDIR /app
 RUN apt-get update && apt-get upgrade -y && apt-get clean
@@ -6,7 +6,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get clean
 RUN apt-get install -y software-properties-common
 RUN apt-get install -y portaudio19-dev ffmpeg openjdk-8-jdk 
 
-RUN add-apt-repository ppa:deadsnakes/ppa && apt update && apt install -y python3.7 python3.7-dev 
+# RUN add-apt-repository ppa:deadsnakes/ppa && apt update && apt install -y python3.7 python3.7-dev 
 
 RUN apt-get install -y python3-pip python3-wheel
 
