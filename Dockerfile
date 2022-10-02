@@ -18,4 +18,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["gunicorn", "--worker-class", "eventlet", "-w", "1", "--threads", "10", "app:app"]
+CMD ["gunicorn", "--worker-class", "eventlet", "-w", "1", "--threads", "3", "app:app"]
