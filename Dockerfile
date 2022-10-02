@@ -7,7 +7,7 @@ RUN add-apt-repository ppa:deadsnakes/ppa && apt update && apt install -y python
 COPY requirements.txt .
 RUN pip3 install --upgrade pip wheel && pip3 install -r requirements.txt
 COPY . .
-# CMD ["python3.7", "app.py"]
+
 EXPOSE 5000
 
-CMD gunicorn --worker-class eventlet -w 1 --threads 10 app:app
+CMD ["gunicorn", "--worker-class", "eventlet", "-w", "-1", "--threads", "10", "app:app"]
