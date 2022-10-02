@@ -6,6 +6,8 @@ RUN apt-get install -y portaudio19-dev ffmpeg openjdk-8-jdk software-properties-
 
 RUN add-apt-repository ppa:deadsnakes/ppa && apt update && apt install -y python3.7 python3.7-dev gcc python3-pip python3-wheel
 
+RUN update-alternatives --set python /usr/bin/python3.7
+
 COPY requirements.txt .
 RUN pip3 install --upgrade pip wheel && pip3 install -r requirements.txt
 COPY . .
