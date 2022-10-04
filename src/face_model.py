@@ -117,9 +117,7 @@ class FaceModel:
         detections = self.__face_dnn.forward()
 
         for i in range(0, detections.shape[2]):
-
             if detections[0, 0, i, 2] > 0.8:
-
                 bbox = detections[0, 0, i, 3:7] * \
                     np.array([width, height, width, height])
                 (start_x, start_y, end_x, end_y) = bbox.astype('int')
