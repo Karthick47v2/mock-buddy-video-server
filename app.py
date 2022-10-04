@@ -1,6 +1,6 @@
 """Process client requests"""
 
-from flask import Flask 
+from flask import Flask
 from flask_socketio import SocketIO
 from flask_cors import CORS
 
@@ -36,7 +36,9 @@ def get_vid_fb():
     Returns:
         dict[str,str]: response
     """
-    return fm.get_vid_feedback()
+    result = fm.get_vid_feedback()
+    fm.reset()
+    return result
 
 
 # SocketIO events
